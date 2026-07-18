@@ -35,3 +35,13 @@ def load_pipeline_assets():
         return None,None,None
 final_rf,preprocessor,selector = load_pipeline_assets()
 
+st.sidebar.header("Control Panel")
+app_mode = st.sidebar.radio("Navigate Workspace",["Single applicant","Random forest structural inspector"])
+
+if app_mode == "Single applicant":
+    pass
+else:
+    pass
+
+
+
