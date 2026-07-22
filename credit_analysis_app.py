@@ -56,6 +56,7 @@ if app_mode == "Single applicant mode":
         with row_1_3:
             credit_amount = st.number_input("Enter your loan amount",min_value=250,max_value=20000,step=50)
             purpose = st.selectbox("Select your loan purpose",options=["car","radio/TV","business","furniture/equipment","education","repairs","vacation/others"])
+        st.markdown("---")
         st.markdown("**Hierarchical risk tiering**")
         
         row_2_1,row_2_2,row_2_3 = st.columns(3)
