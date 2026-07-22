@@ -10,4 +10,4 @@ scikit-learn>=1.9.0
 joblib>=1.5.3
 
 # Model Interpretability / Visualization (if used in notebook/app)
-matplotlib>=3.7.0
+matplotlib>=3.11.1
