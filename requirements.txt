@@ -1,0 +1,13 @@
+# Core Web Framework
+streamlit>=1.30.0
+
+# Data Manipulation & Array Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Machine Learning & Model Deserialization
+scikit-learn>=1.3.0
+joblib>=1.3.0
+
+# Model Interpretability / Visualization (if used in notebook/app)
+matplotlib>=3.7.0

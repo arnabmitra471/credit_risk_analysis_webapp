@@ -1,4 +1,6 @@
 *.ipynb
+
+!dim_reduction_german_credit_data.ipynb
 *.csv
 *.jpg
 *.kf
@@ -7,3 +9,4 @@ German_credit_classification_project/
 output screenshots/
 market_basket_analysis_with_grocery_dataset/
 random_forest_dim_reduction_german_credit_dataset/
+*.pkl
