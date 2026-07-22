@@ -37,7 +37,7 @@ def load_updated_pipeline(model_file,prep_file,sel_file):
         return rf_model,preprocessor,feature_selector
     except Exception as e:
         return None,None,None
-if uploaded_model and uploaded_feat_selector and uploaded_feat_selector:
+if uploaded_model and uploaded_preprocessor and uploaded_feat_selector:
     final_rf,preprocessor,selector = load_updated_pipeline(uploaded_model,uploaded_preprocessor,uploaded_feat_selector)
     st.sidebar.success("All three pipeline assets loaded into memory")
 else:
@@ -60,7 +60,7 @@ if app_mode == "Single applicant mode":
             age = st.number_input("Enter your age",min_value=18,max_value=100,placeholder="Enter your age")
             sex = st.selectbox("Biological sex",options=["male","female"],placeholder="Select your gender")
         with row_1_2:
-            duration = st.number_input("Loan duration(Months)",min_value=4,max_value=72,value=24)
+            duration = st.number_input("Loan duration(Months)",min_value=4,max_value=72,value=24,placeholder="Enter the loan duration")
             housing = st.selectbox("Housing Tenure Status",options=["own","rent","free"],placeholder="Housing tenure status")
         with row_1_3:
             credit_amount = st.number_input("Enter your loan amount",min_value=250,max_value=20000,step=50,placeholder="Loan amount")
