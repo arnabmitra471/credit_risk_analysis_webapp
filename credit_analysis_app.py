@@ -52,6 +52,7 @@ ordinal_cols = ["Saving accounts","Checking Account"]
 categorical_cols = ["Sex","Housing","Purpose"]
 numeric_cols = ["Age","Credit amount","Duration"]
 
+# Single applicant mode
 if app_mode == "Single applicant mode":
     st.subheader("Live Applicant Profiling")
     with st.expander("Open applicant metrics entry form"):
