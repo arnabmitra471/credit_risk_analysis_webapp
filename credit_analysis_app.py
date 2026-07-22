@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 import joblib
 st.set_page_config(page_title="Credit Risk intelligence dashboard",
                    page_icon="🔐",
@@ -66,9 +67,12 @@ if app_mode == "Single applicant mode":
             checking_acount = st.selectbox("Checking account liquidity tier",options=["none","little","moderate","quite rich","rich"],placeholder="Checking account balance")
         with row_2_3:
             job = st.selectbox("Employment status",options=[0,1,2,3],format_func= lambda x: {0: "0: Unskilled/ Non resident",1:"1: Unskilled/Resident",2: "2: Skilled staff",3: "3: Highly silled"}[x],placeholder="Job type")
-
         
-        
+        raw_input_df = pd.DataFrame({"Age": age,"Sex" : sex,"Duration": duration,
+                                     "Saving Accounts" : saving_accounts,
+                                     "Checking account" : checking_acount,"Job": job,
+                                     "Purpose" : purpose,
+                                     "Housing": housing,"Credit amount" : credit_amount},index=[0])
         
 else:
     pass
