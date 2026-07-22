@@ -2,7 +2,7 @@
 streamlit>=1.30.0
 
 # Data Manipulation & Array Processing
-pandas>=2.0.0
+pandas>=3.0.3
 numpy>=2.5.1
 
 # Machine Learning & Model Deserialization
