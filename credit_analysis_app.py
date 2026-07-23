@@ -24,6 +24,7 @@ st.markdown("""
 st.markdown('<div class="main-title">Credit risk intelligence and ensemble analytics dashboard</div>',unsafe_allow_html=True)
 st.markdown('<div class="subtitle">An interactive deployment showcasing structural feature transformations, operational evaluation cutoffs, and transparent Random Forest tree tracking.</div>', unsafe_allow_html=True)
 
+st.sidebar.header("Control Panel")
 uploaded_model = st.sidebar.file_uploader("Upload random forest model(.pkl)",type=[".pkl"])
 uploaded_preprocessor = st.sidebar.file_uploader("Upload Preprocessor(.pkl)",type=[".pkl"])
 uploaded_feat_selector = st.sidebar.file_uploader("Upload Feature Selector(.pkl)",type=[".pkl"])
@@ -44,7 +45,7 @@ else:
     final_rf,preprocessor,selector = None,None,None
     st.sidebar.info("Please upload all the 3 .pkl files to unlock the full experience")
 
-st.sidebar.header("Control Panel")
+
 app_mode = st.sidebar.radio("Navigate Workspace",["Single applicant mode","Random forest structural inspector mode"])
 
 # Helper column lists for reconstruction
