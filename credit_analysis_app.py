@@ -36,8 +36,45 @@ def load_updated_pipeline(model_file,prep_file,sel_file):
         preprocessor = joblib.load(prep_file)
         feature_selector = joblib.load(sel_file)
         return rf_model,preprocessor,feature_selector
-    except Exception as e:
+    except Exception:
         return None,None,None
+
+def sandbox_prediction(input_df):
+    """
+    Starts at a baseline risk and adjusts the risk based on 
+    various input features extracted from the dataframe itself
+    """
+    row = input_df.iloc[0]
+    baseline_risk = 0.50
+
+    # Finding the loan duration with a min of 1 month threshold
+    duration = max(row["Duration"],1)
+    monthly_payment = row["Credit amount"]/duration
+
+    if monthly_payment > 400:
+        baseline_risk += 0.20
+    elif monthly_payment > 200:
+        baseline_risk += 0.10
+    elif monthly_payment < 100:
+        baseline_risk -= 0.10
+
+    if row["Checking account"] in ["little","moderate"]:
+        baseline_risk += 0.15
+    elif row["Checking account"] in ["rich","quite rich"]:
+        baseline_risk -= 0.15
+
+    if row["Saving accounts"] in ["rich","quite rich"]:
+        baseline_risk -= 0.10
+    elif row["Saving accounts"] == "little":
+        baseline_risk += 0.10
+
+    final_risk = max(0.05,min(0.95,baseline_risk)) # base_line_risk should be in the interval [0.05,0.95]
+
+    prediction = 1 if final_risk <= 0.50 else 0
+    confidence = (1 - final_risk) if prediction == 1 else final_risk
+
+    return prediction,confidence,final_risk
+
 if uploaded_model and uploaded_preprocessor and uploaded_feat_selector:
     final_rf,preprocessor,selector = load_updated_pipeline(uploaded_model,uploaded_preprocessor,uploaded_feat_selector)
     st.sidebar.success("All three pipeline assets loaded into memory")
@@ -83,6 +120,7 @@ if app_mode == "Single applicant mode":
                                      "Checking account" : checking_acount,"Job": job,
                                      "Purpose" : purpose,
                                      "Housing": housing,"Credit amount" : credit_amount},index=[0])
+        
         
 else:
     pass
