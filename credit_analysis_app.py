@@ -58,7 +58,7 @@ def sandbox_prediction(input_df):
     elif monthly_payment < 100:
         baseline_risk -= 0.10
 
-    if row["Checking account"] in ["little","moderate"]:
+    if row["Checking account"] == "little":
         baseline_risk += 0.15
     elif row["Checking account"] in ["rich","quite rich"]:
         baseline_risk -= 0.15
