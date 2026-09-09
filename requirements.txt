@@ -7,7 +7,7 @@ numpy>=2.5.1
 
 # Machine Learning & Model Deserialization
 scikit-learn>=1.9.0
-joblib>=1.5.3
+joblib>=1.6.0
 
 # Model Interpretability / Visualization (if used in notebook/app)
 matplotlib>=3.11.1
